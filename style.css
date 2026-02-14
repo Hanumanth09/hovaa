@@ -1,0 +1,493 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    width: 100%;
+    max-width: none;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    animation: fadeInDown 1s ease;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.title-line1 {
+    display: inline-block;
+    color: #ff1744;
+    font-weight: 700;
+    font-size: 2.8rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    font-family: 'Georgia', serif;
+    letter-spacing: 1px;
+}
+
+.title-line2 {
+    display: inline-block;
+    color: #ff69b4;
+    font-weight: 600;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    font-family: 'Georgia', serif;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.tree-container {
+    margin: 0 auto 40px;
+    animation: fadeIn 1.5s ease;
+    overflow: visible;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#treeCanvas {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(255,23,68,0.4));
+    cursor: pointer;
+    display: block;
+}
+
+.trunk {
+    animation: growTrunk 1.5s ease;
+}
+
+.branch {
+    fill: none;
+    stroke: #654321;
+    stroke-width: 8;
+    stroke-linecap: round;
+    animation: drawBranch 2s ease;
+}
+
+.heart-leaf {
+    animation: pulse 2s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.heart-leaf:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 20px currentColor);
+}
+
+.hl1 { animation-delay: 0s; }
+.hl2 { animation-delay: 0.1s; }
+.hl3 { animation-delay: 0.2s; }
+.hl4 { animation-delay: 0.3s; }
+.hl5 { animation-delay: 0.4s; }
+.hl6 { animation-delay: 0.5s; }
+.hl7 { animation-delay: 0.6s; }
+.hl8 { animation-delay: 0.7s; }
+.hl9 { animation-delay: 0.8s; }
+.hl10 { animation-delay: 0.9s; }
+.hl11 { animation-delay: 1s; }
+.hl12 { animation-delay: 1.1s; }
+.hl13 { animation-delay: 1.2s; }
+.hl14 { animation-delay: 1.3s; }
+.hl15 { animation-delay: 1.4s; }
+.hl16 { animation-delay: 1.5s; }
+.hl17 { animation-delay: 1.6s; }
+.hl18 { animation-delay: 1.7s; }
+.hl19 { animation-delay: 1.8s; }
+.hl20 { animation-delay: 1.9s; }
+.hl21 { animation-delay: 2s; }
+.hl22 { animation-delay: 2.1s; }
+.hl23 { animation-delay: 2.2s; }
+.hl24 { animation-delay: 2.3s; }
+.hl25 { animation-delay: 2.4s; }
+.hl26 { animation-delay: 2.5s; }
+.hl27 { animation-delay: 2.6s; }
+.hl28 { animation-delay: 2.7s; }
+.hl29 { animation-delay: 2.8s; }
+.hl30 { animation-delay: 2.9s; }
+.hl31 { animation-delay: 3s; }
+
+.h1 { animation-delay: 0s; }
+.h2 { animation-delay: 0.1s; }
+.h3 { animation-delay: 0.2s; }
+.h4 { animation-delay: 0.3s; }
+.h5 { animation-delay: 0.4s; }
+.h6 { animation-delay: 0.5s; }
+.h7 { animation-delay: 0.6s; }
+.h8 { animation-delay: 0.7s; }
+.h9 { animation-delay: 0.8s; }
+.h10 { animation-delay: 0.9s; }
+.h11 { animation-delay: 1s; }
+.h12 { animation-delay: 1.1s; }
+.h13 { animation-delay: 1.2s; }
+.h14 { animation-delay: 1.3s; }
+.h15 { animation-delay: 1.4s; }
+.h16 { animation-delay: 1.5s; }
+.h17 { animation-delay: 1.6s; }
+.h18 { animation-delay: 1.7s; }
+.h19 { animation-delay: 1.8s; }
+.h20 { animation-delay: 1.9s; }
+.h21 { animation-delay: 2s; }
+.h22 { animation-delay: 2.1s; }
+.h23 { animation-delay: 2.2s; }
+.h24 { animation-delay: 2.3s; }
+.h25 { animation-delay: 2.4s; }
+.h26 { animation-delay: 2.5s; }
+.h27 { animation-delay: 2.6s; }
+.h28 { animation-delay: 2.7s; }
+.h29 { animation-delay: 2.8s; }
+.h30 { animation-delay: 2.9s; }
+
+.quotes-container {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #f67280 100%);
+    border: 4px solid #fff;
+    border-radius: 30px;
+    padding: 50px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    box-shadow: 0 15px 60px rgba(255, 23, 68, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
+    position: relative;
+    min-height: 250px;
+    z-index: 100;
+    transform: perspective(1000px) rotateX(2deg);
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.quote {
+    display: none !important;
+    animation: fadeIn 0.8s ease;
+}
+
+.quote.active {
+    display: block !important;
+}
+
+.quote span {
+    font-size: 1rem;
+    color: #ff4081;
+    display: block;
+    text-shadow: 0 0 5px rgba(255, 64, 129, 0.5);
+}
+
+.quote p {
+    font-size: 2.2rem;
+    background: linear-gradient(45deg, #fff, #ffe6f0, #fff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+    margin: 0;
+    line-height: 2.2;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    font-weight: 800;
+    display: block !important;
+    visibility: visible !important;
+    animation: textShimmer 4s ease-in-out infinite;
+    font-family: 'Brush Script MT', cursive, 'Georgia', serif;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+}
+
+.nav-btn {
+    background: rgba(255, 23, 68, 0.2);
+    border: 2px solid #ff1744;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #ff1744;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
+}
+
+.nav-btn:hover {
+    background: #ff1744;
+    color: #fff;
+    transform: scale(1.2) rotate(360deg);
+    box-shadow: 0 0 30px rgba(255, 23, 68, 0.8);
+}
+
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: float 6s ease-in infinite;
+    opacity: 0;
+    filter: drop-shadow(0 0 5px rgba(255, 23, 68, 0.8));
+}
+
+.h1 { animation-delay: 0s; }
+.h2 { animation-delay: 0.2s; }
+.h3 { animation-delay: 0.4s; }
+.h4 { animation-delay: 0.6s; }
+.h5 { animation-delay: 0.8s; }
+.h6 { animation-delay: 1s; }
+.h7 { animation-delay: 1.2s; }
+.h8 { animation-delay: 1.4s; }
+.h9 { animation-delay: 1.6s; }
+
+.chicken {
+    animation: chickenWalk 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+#chicken1 {
+    animation-delay: 0s;
+}
+
+#chicken2 {
+    animation-delay: 1s;
+}
+
+#chicken3 {
+    animation-delay: 2s;
+}
+
+@keyframes chickenWalk {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(5px) translateY(-3px);
+    }
+    50% {
+        transform: translateX(10px) translateY(0);
+    }
+    75% {
+        transform: translateX(5px) translateY(-3px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 15px 60px rgba(255, 23, 68, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 15px 80px rgba(255, 23, 68, 0.8), 0 0 50px rgba(255, 255, 255, 0.5);
+    }
+}
+
+@keyframes textShimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes growTrunk {
+    from {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes drawBranch {
+    from {
+        stroke-dasharray: 200;
+        stroke-dashoffset: 200;
+    }
+    to {
+        stroke-dasharray: 200;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .title-line1 {
+        font-size: 2rem;
+    }
+    
+    .title-line2 {
+        font-size: 1.8rem;
+    }
+    
+    #treeCanvas {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+    
+    .tree-container {
+        margin: 0 auto 20px;
+    }
+    
+    .quotes-container {
+        padding: 30px 20px;
+        margin: 0 15px 20px;
+        max-width: 100%;
+        min-height: 200px;
+        border-radius: 20px;
+    }
+    
+    .quote p {
+        font-size: 1.4rem;
+        line-height: 1.8;
+    }
+    
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .title-line1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .title-line2 {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+    
+    #treeCanvas {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .quotes-container {
+        padding: 25px 15px;
+        margin: 0 10px 15px;
+    }
+    
+    .quote p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
